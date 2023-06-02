@@ -1,0 +1,94 @@
+﻿@model IDGS903_Tema1.Models.Traductor
+
+@{
+    ViewBag.Title = "RegistrarPalabra";
+}
+
+<h2>RegistrarPalabra</h2>
+
+@using (Html.BeginForm("RegistrarPalabra", "Traductor"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Traductor</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.txtIng, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.txtIng, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.txtIng, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.txtEspa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.txtEspa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.txtEspa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+
+
+}
+@using (Html.BeginForm("LeerPalabras", "Traductor"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Mostrar" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+
+
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Español</th>
+                <th>English</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.palabras != null)
+            {
+                foreach (string item in ViewBag.palabras)
+                {
+                    <tr>
+                        @foreach (string datos in item.Split('='))
+                        {
+                            <td>@datos</td>
+                        }
+
+                    </tr>
+                }
+
+
+            }
+            else
+            {
+                <tr>
+                    <td>Sin datos</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

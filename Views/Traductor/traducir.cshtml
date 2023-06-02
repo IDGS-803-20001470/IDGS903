@@ -1,0 +1,50 @@
+﻿@model IDGS903_Tema1.Models.TraductorRespuesta
+
+@{
+    ViewBag.Title = "traducir";
+}
+
+<h2>traducir</h2>
+@using (Html.BeginForm("Traducir", "Traductor"))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.palabra, htmlAttributes:
+   new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.palabra, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.palabra, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-check">
+                    @Html.RadioButtonFor(model => model.tipo, "esp", false)
+                    @Html.Label("Español")
+                    
+                </div>
+                <div class="form-check">
+                    @Html.RadioButtonFor(model => model.tipo, "ing", false)
+                    @Html.Label("Ingles")
+                </div>
+                <input type="submit" value="Traducir" class="btn btn-default" />
+            </div>
+          
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputTexto2">Input de Texto:</label>
+                    @if (@ViewBag.palabraTraducida != null)
+                    {
+                        <p>@ViewBag.palabraTraducida</p>
+                    }
+                    else
+                    {
+                        <p>Sin Información</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

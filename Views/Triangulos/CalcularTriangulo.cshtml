@@ -1,0 +1,77 @@
+﻿@model IDGS903_Tema1.Models.Triangulos
+
+@{
+    ViewBag.Title = "CalcularTriangulo";
+}
+
+<h2>CalcularTriangulo</h2>
+@using (Html.BeginForm("CalcularTriangulo", "Triangulos"))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.xA, htmlAttributes:
+   new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.xA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.xA, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.yA, htmlAttributes:
+   new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.yA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.yA, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.xB, htmlAttributes:
+   new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.xB, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.xB, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.yB, htmlAttributes:
+   new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.yB, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.yB, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.xC, htmlAttributes:
+   new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.xC, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.xC, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.yC, htmlAttributes:
+   new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.yC, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.yC, "", new { @class = "text-danger" })
+
+                </div>
+
+                <input type="submit" value="Calcular" class="btn btn-success" />
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputTexto2">Resultado Triangulo:</label>
+                    @if (@ViewBag.respuestaCalculo != null)
+                    {
+                        <p>@ViewBag.respuestaCalculo</p>
+                    }
+                    else
+                    {
+                        <p>Sin Información</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
